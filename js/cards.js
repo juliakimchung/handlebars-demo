@@ -1,11 +1,12 @@
 "use strict";
 
-var userInput = document.getElementById('editInput'),
-    cardStyle = {};
+var cardStyle = {};
+var userInput;
 
 cardStyle.highlightCard = function(event) {
   // grab all the "is-clicked" elements and remove the class
   // before adding it to the latest clicked card
+  var userInput = document.getElementById('editInput');
   var carCards = document.getElementsByClassName("is-clicked");
   if (carCards.length > 0) {
     for (var i = 0; i < carCards.length; i++ ) {
@@ -20,11 +21,15 @@ cardStyle.highlightCard = function(event) {
   // console.log("className", card.className);
 };
 
-cardStyle.editCard = function(event) {
-  var card = document.getElementsByClassName('is-clicked')[0],
-      description = card.lastChild;
+cardStyle.editCard = function() {
 
-  description.innerHTML = userInput.value;
+  // //var card = document.getElementsByClassName('is-clicked')[0];
+  // var card = event.currentTarget;
+  // var description = card;
+
+  // description.innerHTML = userInput.value;
+  let $copy = $(".card-copy");
+  $(".is-clicked").find(".card-copy").text($("#editInput").val());
 };
 
 module.exports = cardStyle;
